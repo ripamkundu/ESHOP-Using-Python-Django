@@ -1,0 +1,49 @@
+// Countdown
+let dayItem = document.querySelector("#days");
+let hoursItem = document.querySelector("#hours");
+let minItem = document.querySelector("#min");
+let secItem = document.querySelector("#sec");
+
+let countDown = () => {
+    let lastDate = new Date("1 june 2023");
+    let currentDate = new Date();
+    let myDate = lastDate - currentDate;
+
+    let days = Math.floor(myDate / 1000 / 60 / 60 / 24);
+    let hours = Math.floor(myDate / 1000 / 60 / 60) % 24;
+    let min = Math.floor(myDate / 1000 / 60 ) % 60;
+    let sec = Math.floor(myDate / 1000 ) % 60;
+
+    dayItem.innerHTML = days;
+    hoursItem.innerHTML = hours;
+    minItem.innerHTML = min;
+    secItem.innerHTML = sec;
+}
+countDown();
+setInterval(countDown, 1000);
+
+// Scroll Back to Top
+function scrolltopBack(){
+    let scrolltopBack = document.querySelector("#scrollUp")
+    window.onscroll = function(){
+        var Scroll = document.documentElement.scrollTop;
+        if(Scroll >= 250){
+            scrolltopBack.classList.add('scrollActive')
+        }
+        else{
+            scrolltopBack.classList.remove('scrollActive')
+        }
+    }
+}
+scrolltopBack()
+
+
+/* Nav Hide */
+let navbar = document.querySelectorAll('.nav-link');
+let navCollapse = document.querySelector('.navbar-collapse.collapse');
+
+navbar.forEach(function(a){
+    a.addEventListener("click", function(){
+        navCollapse.classList.remove("show");
+    })
+})
